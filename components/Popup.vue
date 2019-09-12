@@ -17,11 +17,7 @@ export default {
       type: String,
       default: ''
     }
-  },
-  data() {
-    return {}
-  },
-  mounted() {}
+  }
 }
 </script>
 
