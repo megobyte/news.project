@@ -27,7 +27,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~/plugins/localStorage.js', ssr: false }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -38,7 +38,13 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa'],
+  modules: ['@nuxtjs/pwa', '@nuxtjs/style-resources'],
+  /*
+   ** Additional styles
+   */
+  styleResources: {
+    scss: ['~assets/scss/vars.scss']
+  },
   /*
    ** Build configuration
    */
