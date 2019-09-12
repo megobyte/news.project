@@ -45,22 +45,37 @@ export default {
     ...mapGetters(['blog'])
   },
   methods: {
+    /**
+     * Попап редактирования статьи
+     */
     editArticle(article) {
       this.article = article
       this.edit_article = true
     },
+    /**
+     * Закрываем попап редактирования статьи
+     */
     closeEdit() {
       this.edit_article = false
       this.article = {}
     },
+    /**
+     * Попап удаления статьи
+     */
     removeArticlePopup(article) {
       this.article = article
       this.remove_article = true
     },
+    /**
+     * Удаляем статью
+     */
     removeArticle() {
       this.$store.commit('removeArticle', { id: this.article.id })
       this.closeRemove()
     },
+    /**
+     * Закрываем попап удаления статьи
+     */
     closeRemove() {
       this.remove_article = false
       this.article = {}

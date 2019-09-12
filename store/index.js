@@ -1,16 +1,28 @@
 export const state = () => ({
+  // аутентификация
   auth: false,
+  // массив записей
   blog: [],
+  // последний ID
   last_id: 0
 })
 
 export const mutations = {
+  /**
+   * Авторизуемся
+   */
   authMe(state) {
     state.auth = true
   },
+  /**
+   * Деавторизуемся
+   */
   deauthMe(state) {
     state.auth = false
   },
+  /**
+   * Сохраняем запись
+   */
   saveArticle(state, payload) {
     if (payload.id === 0) {
       // Это новый пост
@@ -33,6 +45,9 @@ export const mutations = {
       })
     }
   },
+  /**
+   * Удаляем запись
+   */
   removeArticle(state, payload) {
     let index = -1
     state.blog.forEach((e, i) => {
@@ -43,6 +58,9 @@ export const mutations = {
 }
 
 export const getters = {
+  /**
+   * Геттер записей в блоге, отсортированных по времени от новых к старым
+   */
   blog(state) {
     const times = state.blog.map((e, i) => {
       return { index: i, time: e.time }

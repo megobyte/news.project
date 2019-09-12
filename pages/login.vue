@@ -25,6 +25,9 @@ export default {
     }
   },
   methods: {
+    /**
+     * Аутентификация
+     */
     authMe() {
       this.error = []
       if (this.login === '') this.error.push('Вы не заполнили логин')
@@ -37,15 +40,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-section.login {
-  .error {
-    margin-bottom: $gap;
-    padding: $gap;
-    background: rgb(228, 156, 156);
-    border: 1px solid red;
-    color: rgb(133, 4, 4);
-  }
-}
-</style>

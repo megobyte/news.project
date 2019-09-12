@@ -23,6 +23,9 @@ export default {
     }
   },
   computed: {
+    /**
+     * Конвертация времени из unixtime в человеческий вид
+     */
     time() {
       const date = new Date(this.article.time * 1000)
       const month =

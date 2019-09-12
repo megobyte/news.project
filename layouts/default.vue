@@ -17,6 +17,9 @@ export default {
     }
   },
   methods: {
+    /**
+     * Деавторизация
+     */
     deauth() {
       this.$store.commit('deauthMe')
       this.$router.push('/')
@@ -90,6 +93,14 @@ button {
   button {
     margin-left: $gap;
   }
+}
+
+.error {
+  margin-bottom: $gap;
+  padding: $gap;
+  background: rgb(228, 156, 156);
+  border: 1px solid red;
+  color: rgb(133, 4, 4);
 }
 
 .menu {

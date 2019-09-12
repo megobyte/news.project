@@ -1,5 +1,6 @@
 <template lang="pug">
   .article-edit
+    .error(v-if="error.length > 0", v-html="error.join('<br />')")
     label.post-title
       input(type="text", v-model="title", placeholder="Заголовок")
     label.post-content
@@ -31,10 +32,12 @@ export default {
       content: '',
       time: 0,
       savetime: false,
-      editing: false
+      editing: false,
+      error: []
     }
   },
   mounted() {
+    // проверяем, передана ли запись в проп
     if (this.article.id) {
       this.id = this.article.id
       this.title = this.article.title
@@ -44,17 +47,26 @@ export default {
     }
   },
   methods: {
+    /**
+     * Сохранения записи
+     */
     save() {
-      let time =
-        this.time > 0 ? this.time : parseInt(new Date().getTime() / 1000)
-      if (this.savetime) time = parseInt(new Date().getTime() / 1000)
-      this.$store.commit('saveArticle', {
-        id: this.id,
-        title: this.title,
-        content: this.content,
-        time
-      })
-      this.$emit('saved')
+      this.error = []
+      if (this.title === '') this.error.push('Вы не заполнили заголовок')
+      if (this.content === '') this.error.push('Вы не заполнили содержание')
+      if (this.error.length === 0) {
+        let time =
+          this.time > 0 ? this.time : parseInt(new Date().getTime() / 1000)
+        // обновляем время, если стоит галочка
+        if (this.savetime) time = parseInt(new Date().getTime() / 1000)
+        this.$store.commit('saveArticle', {
+          id: this.id,
+          title: this.title,
+          content: this.content,
+          time
+        })
+        this.$emit('saved')
+      }
     }
   }
 }
