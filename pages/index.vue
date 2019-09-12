@@ -20,15 +20,23 @@ export default {
 </script>
 
 <style lang="scss">
-section.index {
-  .posts {
-    article {
-      @include flex(row);
-      justify-content: flex-start;
+.articles {
+  @include flex();
+  justify-content: flex-start;
+  align-items: flex-start;
 
-      .time {
-        margin-right: 15px;
-      }
+  article {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .articles {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    article {
+      width: calc(50% - #{$gap / 2});
     }
   }
 }

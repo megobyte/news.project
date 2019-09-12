@@ -59,7 +59,7 @@ export default {
 
     .title {
       width: 100%;
-      padding: 15px;
+      padding: $gap;
       font-size: 1em;
       font-weight: bold;
       @include flex(row);
@@ -72,13 +72,20 @@ export default {
         cursor: pointer;
         @include flex();
         overflow: hidden;
-        width: 15px;
-        height: 15px;
+        width: $gap;
+        height: $gap;
       }
     }
 
     .content {
-      padding: 15px;
+      padding: $gap;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .popup {
+    .window {
+      width: calc(100% - #{$gap * 2});
     }
   }
 }

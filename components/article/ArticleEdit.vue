@@ -75,15 +75,5 @@ export default {
       height: 200px;
     }
   }
-
-  .btns {
-    @include flex(row);
-    justify-content: flex-start;
-
-    button {
-      width: 200px;
-      margin-right: 15px;
-    }
-  }
 }
 </style>

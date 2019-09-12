@@ -1,6 +1,7 @@
 $font: 'Helvetica', sans-serif;
 $text: #333;
 $link: rgb(9, 65, 102);
+$gap: 15px;
 
 @mixin transition($t: all 500ms ease) {
   -webkit-transition: $t;

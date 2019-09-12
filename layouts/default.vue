@@ -4,7 +4,7 @@
       nuxt-link(to="/") Главная
       template(v-if="auth")
         nuxt-link(to="/edit") Редактирование статей
-        a.right(@click="$store.commit('deauthMe')") Выход
+        a.right(@click="deauth") Выход
       template(v-else)
         nuxt-link.right(to="/login") Вход
     nuxt
@@ -14,6 +14,12 @@ export default {
   computed: {
     auth() {
       return this.$store.state.auth
+    }
+  },
+  methods: {
+    deauth() {
+      this.$store.commit('deauthMe')
+      this.$router.push('/')
     }
   }
 }
@@ -34,33 +40,63 @@ body {
 a {
   color: $link;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 label {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: $gap;
 
   span {
     display: block;
     margin-bottom: 5px;
   }
 
-  input[type='text'] {
+  input[type='text'],
+  input[type='password'] {
     width: 250px;
     padding: 5px 0;
   }
 }
 
 button {
-  width: 250px;
-  padding: 5px 0;
+  min-width: 150px;
+  padding: $gap 0;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 5px;
+  background: #ccc;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    background: #eee;
+  }
+
+  &.remove {
+    color: #fff;
+    background: rgb(207, 3, 3);
+
+    &:hover {
+      background: #f00;
+    }
+  }
+}
+
+.btns {
+  @include flex(row);
+  justify-content: flex-end;
+
+  button {
+    margin-left: $gap;
+  }
 }
 
 .menu {
   @include flex(row);
   width: 100%;
   justify-content: flex-start;
-  padding: 15px;
+  padding: $gap;
   border-bottom: 1px solid #eee;
 
   a {
@@ -77,18 +113,21 @@ button {
 
     &.nuxt-link-exact-active {
       font-weight: bold;
+      text-decoration: none;
+      color: $text;
     }
   }
 }
 
 section {
-  padding: 15px;
+  padding: $gap;
   max-width: 100%;
 }
 
 @media screen and (min-width: 992px) {
   section {
     max-width: 1200px;
+    margin: 0 auto;
   }
 }
 </style>

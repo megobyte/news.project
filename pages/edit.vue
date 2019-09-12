@@ -1,12 +1,12 @@
 <template lang="pug">
   section.edit
-    button(@click="add_article = true") Добавить запись
+    button.add(@click="add_article = true") Добавить запись
     .articles
       template(v-for="article in blog")
         Article(:article="article")
-        .btns
-          button(@click="editArticle(article)") Редактировать
-          button.remove(@click="removeArticlePopup(article)") Удалить
+          .btns
+            button(@click="editArticle(article)") Редактировать
+            button.remove(@click="removeArticlePopup(article)") Удалить
     Popup(title="Добавить запись", v-if="add_article", @close="add_article = false")
       article-edit(@saved="add_article = false")
     Popup(title="Изменить запись", v-if="edit_article", @close="closeEdit")
@@ -44,11 +44,6 @@ export default {
     },
     ...mapGetters(['blog'])
   },
-  mounted() {
-    if (!this.auth) {
-      this.$router.push('/login')
-    }
-  },
   methods: {
     editArticle(article) {
       this.article = article
@@ -76,6 +71,20 @@ export default {
 
 <style lang="scss">
 section.edit {
-  /* 1 */
+  .add {
+    margin-bottom: $gap * 2;
+  }
+
+  .articles {
+    button.remove {
+      background: none;
+      color: rgb(207, 3, 3);
+
+      &:hover {
+        background: #f00;
+        color: #fff;
+      }
+    }
+  }
 }
 </style>

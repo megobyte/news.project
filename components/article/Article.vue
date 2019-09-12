@@ -3,6 +3,7 @@
     h2 {{article.title}}
     .time {{time}}
     .content(v-html="article.content")
+    slot
 </template>
 
 <script>
@@ -52,4 +53,31 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+article {
+  border-bottom: 1px dotted #eee;
+  margin-bottom: $gap;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    margin-bottom: $gap;
+    font-weight: normal;
+  }
+
+  .time {
+    font-size: 0.8em;
+    font-style: italic;
+    margin-bottom: $gap;
+  }
+
+  .content {
+    padding-bottom: $gap;
+    line-height: 1.4em;
+  }
+
+  .btns {
+    margin-bottom: $gap;
+  }
+}
+</style>

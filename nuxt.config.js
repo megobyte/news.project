@@ -46,6 +46,12 @@ export default {
     scss: ['~assets/scss/vars.scss']
   },
   /*
+   ** Router configuration
+   */
+  router: {
+    middleware: ['login', 'edit']
+  },
+  /*
    ** Build configuration
    */
   build: {

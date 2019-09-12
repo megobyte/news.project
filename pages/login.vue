@@ -24,11 +24,6 @@ export default {
       return this.$store.state.auth
     }
   },
-  mounted() {
-    if (this.auth) {
-      this.$router.push('/edit')
-    }
-  },
   methods: {
     authMe() {
       this.error = []
@@ -46,8 +41,8 @@ export default {
 <style lang="scss">
 section.login {
   .error {
-    margin-bottom: 15px;
-    padding: 15px;
+    margin-bottom: $gap;
+    padding: $gap;
     background: rgb(228, 156, 156);
     border: 1px solid red;
     color: rgb(133, 4, 4);
