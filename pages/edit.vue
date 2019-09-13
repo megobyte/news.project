@@ -25,6 +25,7 @@ import ArticleEdit from '~/components/article/ArticleEdit'
 import Article from '~/components/article/Article'
 
 export default {
+  name: 'Edit',
   components: {
     Popup,
     ArticleEdit,

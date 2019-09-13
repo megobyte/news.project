@@ -1,6 +1,6 @@
 export default ({ store, redirect, route }) => {
   // Редирект на /login, если нет авторизации
-  if (route.path === '/edit') {
+  if (route.name === 'edit') {
     setTimeout(function() {
       if (!store.state.auth) {
         redirect('/login')

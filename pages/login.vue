@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  name: 'Login',
   data() {
     return {
       login: '',
